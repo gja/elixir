@@ -1,4 +1,3 @@
-let publicPath  = Elixir.config.publicPath;
 let fs;
 let del;
 let glob;
@@ -17,7 +16,8 @@ let revReplace;
  |
  */
 
-Elixir.extend('version', function(src, buildPath) {
+Elixir.extend('version', function(src, buildPath, options) {
+    const publicPath = (options || {}).publicPath || Elixir.config.publicPath;
     const paths = prepGulpPaths(src, buildPath);
 
     loadPlugins();
